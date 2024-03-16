@@ -2,7 +2,7 @@
 
 智能、轻量级、易于扩展的 flutter 日历控件
 
-![demo](assets/demo.gif)
+点击这里查看[demo](assets/demo.gif)
 
 ## 截图
 
