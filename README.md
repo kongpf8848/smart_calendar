@@ -1,7 +1,7 @@
 # smart_calendar
 
 智能、轻量级、易于扩展的 flutter 日历控件
-![demo](assets/demo.webp)
+![demo](assets/demo.gif)
 
 ## 截图
 
