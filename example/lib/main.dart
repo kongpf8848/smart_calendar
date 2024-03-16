@@ -17,9 +17,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (Platform.isAndroid) {
-      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-          statusBarColor: Colors.transparent
-      ));
+      SystemChrome.setSystemUIOverlayStyle(
+          SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     }
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -163,8 +162,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         width: 28,
         height: 28,
         alignment: Alignment.center,
-        decoration: getCalendarItemDecoration(
-            context, bean, focusedDayNotifier.value),
+        decoration:
+            getCalendarItemDecoration(context, bean, focusedDayNotifier.value),
         child: Text(
           "${bean.day}",
           style: getCalendarItemTextStyle(
