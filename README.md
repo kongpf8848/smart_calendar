@@ -1,9 +1,13 @@
 # smart_calendar
 
-智能、轻量级、易于扩展的日历控件
-| 月视图 | 周视图 |
-| :---: | :---: |
-| ![month_view](assets/month_view.jpg) | ![week_view](assets/week_view.jpg)|
+智能、轻量级、易于扩展的 flutter 日历控件
+![demo](assets/demo.webp)
+
+## 截图
+
+|                月视图                |               周视图               |
+| :----------------------------------: | :--------------------------------: |
+| ![month_view](assets/month_view.jpg) | ![week_view](assets/week_view.jpg) |
 
 ## 功能特点
 
