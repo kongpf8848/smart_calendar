@@ -125,6 +125,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   AppBar _buildAppBar(MaterialLocalizations localizations) {
     return AppBar(
+        centerTitle: true,
         title: ValueListenableBuilder<DateTime?>(
             valueListenable: focusedDayNotifier,
             builder: (context, value, child) {
@@ -146,11 +147,18 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 );
               }),
           IconButton(
-            tooltip: "设置",
-            icon: const Icon(
-              Icons.settings,
-            ),
-            onPressed: () {},
+            icon: const Icon(Icons.chevron_left),
+            color:Theme.of(context).colorScheme.onSurface.withOpacity(0.60),
+            onPressed: (){
+             calendarController.previousPage();
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.chevron_right),
+              color:Theme.of(context).colorScheme.onSurface.withOpacity(0.60),
+            onPressed: (){
+              calendarController.nextPage();
+            }
           ),
         ]);
   }

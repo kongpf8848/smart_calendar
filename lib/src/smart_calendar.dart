@@ -478,10 +478,22 @@ class _SmartCalendarState extends State<SmartCalendar>
   }
 
   @override
-  void nextPage(Duration duration, Curve curve) {}
+  void nextPage(Duration duration, Curve curve) {
+    if(_calendarFormat.isWeekView()){
+      weekPageController.nextPage(duration: duration, curve: curve);
+    }else if(_calendarFormat.isMonthView()){
+      monthPageController.nextPage(duration: duration, curve: curve);
+    }
+  }
 
   @override
-  void previousPage(Duration duration, Curve curve) {}
+  void previousPage(Duration duration, Curve curve) {
+    if(_calendarFormat.isWeekView()){
+      weekPageController.previousPage(duration: duration, curve: curve);
+    }else if(_calendarFormat.isMonthView()){
+      monthPageController.previousPage(duration: duration, curve: curve);
+    }
+  }
 
   @override
   CalendarFormat get calendarFormat => _calendarFormat;
