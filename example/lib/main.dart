@@ -1,3 +1,4 @@
+import 'package:example/utils/lunar_utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -73,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               child: SmartCalendar(
                 backgroundColor:
                     Theme.of(context).twColors.primaryBackgroundColor!,
-                rowHeight: 44,
+                rowHeight: 60,
                 calendarController: calendarController,
                 calendarFormat: calendarFormatNotifier.value,
                 onFocusedDayChanged: _onFocusedDayChanged,
@@ -156,23 +157,36 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   Widget _buildCalendarItem(
       BuildContext context, int index, CalendarItem bean) {
+    var dayStyle = getCalendarItemTextStyle(context,
+        calendarController.calendarFormat, bean, focusedDayNotifier.value);
+    var lunarStyle =
+        dayStyle.copyWith(fontSize: 12, fontWeight: FontWeight.normal);
+    if (isJieQi(bean.dateTime) &&
+        !DateUtils.isSameDay(bean.dateTime, focusedDayNotifier.value)) {
+      lunarStyle = lunarStyle.copyWith(
+          color: Theme.of(context).twColors.dangerContentTextColor);
+    }
     return Container(
       alignment: Alignment.center,
       child: Container(
-        width: 28,
-        height: 28,
-        alignment: Alignment.center,
-        decoration:
-            getCalendarItemDecoration(context, bean, focusedDayNotifier.value),
-        child: Text(
-          "${bean.day}",
-          style: getCalendarItemTextStyle(
-              context,
-              calendarController.calendarFormat,
-              bean,
-              focusedDayNotifier.value),
-        ),
-      ),
+          width: 54,
+          height: 54,
+          alignment: Alignment.center,
+          decoration: getCalendarItemDecoration(
+              context, bean, focusedDayNotifier.value),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "${bean.day}",
+                style: dayStyle,
+              ),
+              Text(
+                "${getLunarDayInfo(bean.dateTime)}",
+                style: lunarStyle,
+              ),
+            ],
+          )),
     );
   }
 
