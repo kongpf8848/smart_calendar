@@ -48,10 +48,6 @@ class _CalendarPagerItemState extends State<CalendarPagerItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.symmetric(
-          vertical: GridVerticalPadding,
-          horizontal: GridHorizontalPadding,
-        ),
         color: widget.backgroundColor,
         child: GridView.builder(
           controller: widget.controller,
@@ -59,8 +55,7 @@ class _CalendarPagerItemState extends State<CalendarPagerItem> {
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               mainAxisExtent: widget.rowHeight,
               crossAxisCount: HorizontalItemCount,
-              crossAxisSpacing: GridSpacing,
-              mainAxisSpacing: GridSpacing),
+             ),
           itemBuilder: (c, index) {
             return GestureDetector(
               behavior: HitTestBehavior.opaque,

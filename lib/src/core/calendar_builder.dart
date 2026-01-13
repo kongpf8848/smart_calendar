@@ -7,9 +7,7 @@ import 'calendar_page.dart';
 import 'calendar_item.dart';
 
 const int HorizontalItemCount = 7;
-const double GridSpacing = 0;
-const double GridVerticalPadding = 0;
-const double GridHorizontalPadding = 0;
+
 
 //起始年份
 const StartYear = 1900;

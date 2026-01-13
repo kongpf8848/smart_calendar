@@ -195,15 +195,13 @@ class _SmartCalendarState extends State<SmartCalendar>
       builder: (context, constraints) {
         flexibleSpaceHeight = constraints.biggest.height;
         if (flexibleSpaceHeight <=
-                toolbarHeight * lines + GridVerticalPadding * 2 &&
+                toolbarHeight * lines &&
             gridController.hasClients &&
             !isHorizontalScroll) {
-          gridController.jumpTo((toolbarHeight * lines +
-                      GridVerticalPadding * 2 -
+          gridController.jumpTo((toolbarHeight * lines -
                       flexibleSpaceHeight) *
                   selectLine /
-                  (lines - 1) +
-              selectLine * GridSpacing);
+                  (lines - 1));
         }
 
         return Stack(
@@ -326,7 +324,7 @@ class _SmartCalendarState extends State<SmartCalendar>
     return SliverAppBar(
       backgroundColor: widget.backgroundColor,
       pinned: true,
-      toolbarHeight: toolbarHeight + GridVerticalPadding * 2,
+      toolbarHeight: toolbarHeight,
       expandedHeight: expandedHeight,
       flexibleSpace: _buildFlexibleSpace(),
     );
@@ -350,13 +348,11 @@ class _SmartCalendarState extends State<SmartCalendar>
   }
 
   double _getExpandHeight(int lines) {
-    return lines * toolbarHeight +
-        GridVerticalPadding * 2 +
-        (lines - 1) * GridSpacing;
+    return lines * toolbarHeight;
   }
 
   _onMainScrollEnd() {
-    if (flexibleSpaceHeight == toolbarHeight + GridVerticalPadding * 2) {
+    if (flexibleSpaceHeight == toolbarHeight) {
       int index = selectItemData.selectedLine * HorizontalItemCount;
       shrinkDateTime = selectItemData.beans[index].dateTime;
       weekPageController = PageController(initialPage: WeekPageInitialIndex);
@@ -369,8 +365,8 @@ class _SmartCalendarState extends State<SmartCalendar>
     //   debugPrint('+++++++++++++SmartCalendar,onCalendarFormatChanged11(CalendarFormat.MONTH');
     //   _onCalendarFormatChanged(CalendarFormat.MONTH);
     // }
-    if (flexibleSpaceHeight > toolbarHeight + GridVerticalPadding * 2 &&
-        flexibleSpaceHeight < toolbarHeight * lines / 2 + GridVerticalPadding) {
+    if (flexibleSpaceHeight > toolbarHeight &&
+        flexibleSpaceHeight < toolbarHeight * lines / 2) {
       shrink();
     } else if (flexibleSpaceHeight > toolbarHeight * lines / 2 &&
         flexibleSpaceHeight < toolbarHeight * lines) {
